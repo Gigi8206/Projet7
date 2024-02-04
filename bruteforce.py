@@ -18,3 +18,4 @@ def maximiser_benefices(actions, budget_max):
         combinaisons = combinations(actions, taille_combinaison)
           # Parcourir chaque combinaison
         for combinaison in combinaisons:
+            pass
