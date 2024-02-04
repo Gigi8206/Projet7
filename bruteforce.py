@@ -20,9 +20,6 @@ def maximiser_benefices(actions, budget_max):
 
         # Parcourir chaque combinaison
         for combinaison in combinaisons:
-<<<<<<< HEAD
-            pass
-=======
             total_cout = sum(cout for _, cout, _ in combinaison)
             total_benefice = sum(benefice for _, _, benefice in combinaison)
             
@@ -42,4 +39,3 @@ if __name__ == "__main__":
 
     print("Meilleure Combinaison:", meilleure_combinaison)
     print("Meilleur Profit:", meilleur_profit)
->>>>>>> d56c1be35d548976689a1c7047b6a17061231911
