@@ -15,8 +15,10 @@ def maximiser_benefices(actions, budget_max):
     meilleur_profit = 0
 
     # Générer toutes les combinaisons possibles d'actions
+    sum_combinaisons = 0
     for taille_combinaison in range(1, len(actions) + 1):
         combinaisons = combinations(actions, taille_combinaison)
+        sum_combinaisons += len([combinaison for combinaison in combinaisons])
 
         # Parcourir chaque combinaison
         for combinaison in combinaisons:
