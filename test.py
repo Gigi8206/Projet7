@@ -94,3 +94,4 @@ plt.xlabel('Décision')
 plt.ylabel('Valeur')
 plt.legend()
 plt.show()
+

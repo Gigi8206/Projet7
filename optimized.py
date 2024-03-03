@@ -13,7 +13,7 @@ def maximiser_benefices_optimise(actions, budget_max):
         for j in range(1, budget_max + 1):  
             # condition pour vérifier que le coût de l'action est inférieur ou égal au budget
             if actions[i - 1][1] <= j:
-                dp[i][j] = max(dp[i - 1][j], actions[i - 1][2] + dp[i - 1][j - actions[i - 1][1]])
+                dp[i][j] = max(dp[i - 1][j], actions[i - 1][2] + dp[i - 1][int(j - actions[i - 1][1])])
             else:
                 dp[i][j] = dp[i - 1][j]
 
