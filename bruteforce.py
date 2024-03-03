@@ -13,7 +13,7 @@ def lire_actions(fichier):
 def maximiser_benefices(actions, budget_max):
     meilleure_combinaison = None
     meilleur_profit = 0
-    
+
     for taille_combinaison in range(1, len(actions) + 1):
         combinaisons = combinations(actions, taille_combinaison)
 
