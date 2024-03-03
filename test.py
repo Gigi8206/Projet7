@@ -80,6 +80,7 @@ decisions_algorithme_2 = obtenir_decisions_algorithme(donnees_financieres_2)
 # Comparaison des résultats de l'algorithme avec les décisions de Sienna pour le premier jeu de données
 plt.figure(figsize=(10, 6))
 plt.plot(decisions_algorithme_1['Decision_Algorithme'], label='Décisions de l\'algorithme (Dataset 1)', color='red')
+print(decisions_sienna_1)
 plt.plot(range(len(decisions_sienna_1)), decisions_sienna_1['Total cost'], label='Coût total de Sienna (Dataset 1)', color='blue')
 plt.plot(range(len(decisions_sienna_1)), decisions_sienna_1['Total return'], label='Retour total de Sienna (Dataset 1)', color='green')
 

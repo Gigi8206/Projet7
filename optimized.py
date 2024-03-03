@@ -1,7 +1,9 @@
 from bruteforce import lire_actions
 
 def maximiser_benefices_optimise(actions, budget_max):
-    # Nombre total d'actions
+    # On filtre les données pour retirer les actions qui donnent de l'argent ou gratuites
+    # On considère que c'est incoherent
+    actions = [action for action in actions if action[1] > 0]
     n = len(actions)
     
     # Matrice pour stocker les valeurs intermédiaires
@@ -9,29 +11,29 @@ def maximiser_benefices_optimise(actions, budget_max):
     dp = [[0] * (budget_max + 1) for _ in range(n + 1)]
 
     # Remplir la matrice par programmation dynamique
-    for i in range(1, n + 1):  
-        for j in range(1, budget_max + 1):  
+    for i in range(1, n + 1):
+        for j in range(1, budget_max + 1):
             # condition pour vérifier que le coût de l'action est inférieur ou égal au budget
-            if actions[i - 1][1] <= j:
-                dp[i][j] = max(dp[i - 1][j], actions[i - 1][2] + dp[i - 1][int(j - actions[i - 1][1])])
+            if int(actions[i - 1][1]) <= j:
+                dp[i][j] = max(dp[i - 1][j], actions[i - 1][2] + dp[i - 1][j - int(actions[i - 1][1])])
             else:
                 dp[i][j] = dp[i - 1][j]
 
     # Retrouver la meilleure combinaison d'actions
-    meilleur_profit = dp[n][budget_max]  
+    meilleur_profit = dp[n][budget_max]
     budget_restant = budget_max
     meilleure_combinaison = []
-    for i in range(n, 0, -1):  
+    for i in range(n, 0, -1):
         # Si le bénéfice a été obtenu en incluant l'action actuelle
         if dp[i][budget_restant] != dp[i - 1][budget_restant]:
-            meilleure_combinaison.append(actions[i - 1])
-            budget_restant -= actions[i - 1][1]
+            meilleure_combinaison.append(int(actions[i - 1][1]))
+            budget_restant -= int(actions[i - 1][1])
 
     return meilleure_combinaison[::-1], meilleur_profit
 
 if __name__ == "__main__":
-    chemin_fichier = 'actions.txt'  
-    budget_limite = 500 
+    chemin_fichier = 'actions.txt'
+    budget_limite = 500
 
     donnees_actions = lire_actions(chemin_fichier)
     meilleure_combinaison, meilleur_profit = maximiser_benefices_optimise(donnees_actions, budget_limite)
